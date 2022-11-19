@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'sensors_demo_gazebo'
+package_name = 'sensors_demos_gazebo'
 
 setup(
     name=package_name,

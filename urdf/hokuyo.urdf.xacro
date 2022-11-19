@@ -5,6 +5,7 @@
   <xacro:property name="height2" value="0.5" />
   <xacro:property name="width" value="0.2" />
   <xacro:property name="mass" value="0.1" />
+
  <!-- Used for fixing robot to Gazebo 'base_link' -->
   <link name="world"/>
 
@@ -20,14 +21,15 @@
     <collision>
       <origin xyz="0 0 0.0" rpy="1.57 0 0"/>
       <geometry>
-          <mesh filename="package://sensors_demos_gazebo/meshes/utm30.dae" scale="1 1 1"/>
+	  <mesh filename="$(find sensors_demos_gazebo)/meshes/utm30.dae" scale="1 1 1"/>  
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 0.0" rpy="1.57 0 0"/>
       <geometry>
-          <mesh filename="package://sensors_demos_gazebo/meshes/utm30.dae" scale="1 1 1"/>
+	  <mesh filename="$(find sensors_demos_gazebo)/meshes/utm30.dae" scale="1 1 1"/>  
+	  
       </geometry>
       <material name="orange"/>
     </visual>
@@ -71,12 +73,16 @@
             <stddev>0.01</stddev>
             </noise>
         </ray>
+     </sensor>
+     </gazebo>
+  <gazebo>
+   <sensor>
         <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
             <topicName>/head/utm30/laser/scan</topicName>
             <frameName>hokuyo_link</frameName>
-        </plugin>
-        </sensor>
-    </gazebo>
+    	</plugin>
+    </sensor>
+  </gazebo>
   
 </robot>
 
