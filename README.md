@@ -5,7 +5,7 @@ Installation:
 1. In your workspace `src` directory: `git clone https://github.com/Jakubach/sensors_demos_gazebo.git`
 2. `sudo rosdep init` 
 3. `rosdep update`
-4. `rosdep install --from-paths src -y --ignore-src`
+4. `rosdep install --from-paths src -y --ignore-src --rosdistro humble`
 5. `colcon build`
 
 Running:
