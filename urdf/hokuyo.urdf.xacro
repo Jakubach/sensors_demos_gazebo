@@ -73,17 +73,15 @@
             <stddev>0.01</stddev>
             </noise>
         </ray>
-     </sensor>
-     </gazebo>
-  <gazebo>
-   <sensor>
-        <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-            <topicName>/head/utm30/laser/scan</topicName>
+        <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_ray_sensor.so">
+            <ros>
+               <remapping>~/out:=/hokuyo/scan</remapping>
+            </ros>
             <frameName>hokuyo_link</frameName>
+            <output_type>sensor_msgs/LaserScan</output_type>
     	</plugin>
     </sensor>
   </gazebo>
   
 </robot>
-
 
