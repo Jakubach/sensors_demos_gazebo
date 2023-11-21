@@ -68,7 +68,8 @@
                 <vertical_fov> ${65.5*3.14/180} </vertical_fov>
                 <diagonal_fov> ${100.6*3.14/180} </diagonal_fov>
                 <image>
-                    <format>R8G8B8</format>
+                    
+                    <format>B8G8R8</format>
                     <width>640</width>
                     <height>480</height>
                 </image>
@@ -83,20 +84,19 @@
                 </noise>
             </camera>
             <plugin name="${sensor_name}_frame_controller" filename="libgazebo_ros_camera.so">
+                  <ros>
+              <!-- <namespace>custom_ns</namespace>-->
+              <remapping>${sensor_name}/image_raw:=${sensor_name}/color/image_raw</remapping>
+              <remapping>${sensor_name}/camera_info:=${sensor_name}/color/camera_info</remapping>
+              <remapping>${sensor_name}/depth/image_raw:=${sensor_name}/depth/image_rect_raw</remapping>
+              <remapping>${sensor_name}/depth/camera_info:=${sensor_name}/depth/camera_info</remapping>
+              <remapping>${sensor_name}/points:=${sensor_name}/depth_registered/points</remapping>
+            </ros>
 
-                <ros>
-                    <namespace>${sensor_name}</namespace>
-                    <remapping>${sensor_name}/image_raw:=color/image_raw</remapping>
-                    <remapping>${sensor_name}/depth/image_raw:=depth/image_rect_raw</remapping>
-                    <remapping>${sensor_name}/camera_info:=camera_info</remapping>
-                    <remapping>${sensor_name}/depth/camera_info:=depth/camera_info</remapping>
-                    <remapping>${sensor_name}/points:=depth/points</remapping>
-                </ros>
-                <camera_name>${sensor_name}</camera_name>
-
-                <frame_name>${sensor_name}_link</frame_name>
-                <min_depth>0.05</min_depth>
-                <max_depth>8.0</max_depth>
+      <camera_name>${sensor_name}</camera_name>
+      <!-- <frame_name> ommited, will default to hokuo_link -->
+      <hack_baseline>0</hack_baseline>
+      <min_depth>0.001</min_depth>
             </plugin>
 	    </sensor>
 	</gazebo>
