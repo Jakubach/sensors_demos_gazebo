@@ -24,7 +24,7 @@ Kinect sensor:
 
 * `ros2 launch sensors_demos_gazebo kinect_launch.py`
 
-Promixity sensor:
+Ultrasonic promixity sensor:
 
 * `ros2 launch sensors_demos_gazebo ultrasonic_launch.py`
   
